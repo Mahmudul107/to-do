@@ -9,7 +9,11 @@ export const toDoStyles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
   },
-  todoContainer: {},
+  todoContainer: {
+    flexDirection: "row",
+    gap: 5,
+    alignItems: "center",
+  },
   title: {
     fontSize: 18,
     fontWeight: 600,
@@ -20,5 +24,11 @@ export const toDoStyles = StyleSheet.create({
     fontWeight: 400,
     color: "black",
   },
-  status: {},
+
+  activeTitles: {
+    fontSize: 18,
+    fontWeight: 300,
+    color: "black",
+    textDecorationLine: "line-through",
+  },
 });
