@@ -1,12 +1,12 @@
 import React from "react";
 import { StatusBar, Text, View } from "react-native";
-import { styles } from "./Header.styles";
+import { headerStyles } from "./Header.styles";
 
 const Header = () => {
   return (
-    <View style={styles.container}>
-        <StatusBar backgroundColor={"blue"}/>
-      <Text style={styles.title}>My To Do</Text>
+    <View style={headerStyles.container}>
+        <StatusBar backgroundColor={"blue"} barStyle={"light-content"}/>
+      <Text style={headerStyles.title}>My To Do</Text>
     </View>
   );
 };
