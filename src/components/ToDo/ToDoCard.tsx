@@ -15,13 +15,13 @@ const ToDoCard = () => {
         <MaterialIcons
           name={isActive ? "radio-button-checked" : "radio-button-unchecked"}
           size={24}
-          color="black"
+          color={isActive? "#7A7777" : "black"}
         />
         <Text style={[isActive ? toDoStyles.activeTitles : toDoStyles.title]}>
           To Do
         </Text>
       </View>
-      <Text style={toDoStyles.time}>6.00 am</Text>
+      <Text style={[toDoStyles.time, isActive && {color: "#7A7777"}]}>6.00 am</Text>
     </TouchableOpacity>
   );
 };

@@ -14,21 +14,20 @@ export const toDoStyles = StyleSheet.create({
     gap: 5,
     alignItems: "center",
   },
-  title: {
-    fontSize: 18,
-    fontWeight: 600,
-    color: "black",
-  },
   time: {
     fontSize: 12,
     fontWeight: 400,
     color: "black",
   },
-
+  title: {
+    fontSize: 18,
+    fontWeight: 600,
+    color: "black",
+  },
   activeTitles: {
     fontSize: 18,
     fontWeight: 300,
-    color: "black",
+    color: "#7A7777",
     textDecorationLine: "line-through",
   },
 });
