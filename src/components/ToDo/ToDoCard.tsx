@@ -4,10 +4,14 @@ import { toDoStyles } from "./ToDoCard.styles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { TTodoData } from "@/src/app";
 
-const ToDoCard = ({ title, time, isCompleted }: TTodoData) => {
-  console.log("Rendering ToDoCard:", title, time, typeof time);
-
+const ToDoCard = ({
+  title,
+  time,
+  isCompleted,
+  onDelete,
+}: TTodoData & { onDelete: () => void }) => {
   const [isActive, setIsActive] = useState(isCompleted);
+
   return (
     <TouchableOpacity
       style={toDoStyles.container}
@@ -27,6 +31,9 @@ const ToDoCard = ({ title, time, isCompleted }: TTodoData) => {
       <Text style={[toDoStyles.time, isActive && { color: "#7A7777" }]}>
         {time?.toString()}
       </Text>
+      <TouchableOpacity onPress={onDelete}>
+        <MaterialIcons name="delete" size={24} color="red" />
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 };

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Modal from "react-native-modal";
-import React, { useState } from "react";
+import React from "react";
 
 const AddTodo = ({
   isActive,
@@ -36,7 +36,11 @@ const AddTodo = ({
           value={value}
           onChangeText={onChangeText}
         ></TextInput>
-        <TouchableOpacity style={styles.button} activeOpacity={0.8} onPress={handleSubmit}>
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.8}
+          onPress={handleSubmit}
+        >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>

@@ -6,6 +6,7 @@ export const toDoStyles = StyleSheet.create({
     padding: 20,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     margin: 10,
     borderRadius: 10,
   },
