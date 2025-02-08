@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { toDoStyles } from "./ToDoCard.styles";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { TTodoData } from "@/src/app";
 
-const ToDoCard = () => {
-  const [isActive, setIsActive] = useState(false);
+const ToDoCard = ({ title, time, isCompleted }: TTodoData) => {
+  console.log("Rendering ToDoCard:", title, time, typeof time);
+
+  const [isActive, setIsActive] = useState(isCompleted);
   return (
     <TouchableOpacity
       style={toDoStyles.container}
@@ -15,13 +18,15 @@ const ToDoCard = () => {
         <MaterialIcons
           name={isActive ? "radio-button-checked" : "radio-button-unchecked"}
           size={24}
-          color={isActive? "#7A7777" : "black"}
+          color={isActive ? "#7A7777" : "black"}
         />
         <Text style={[isActive ? toDoStyles.activeTitles : toDoStyles.title]}>
-          To Do
+          {title}
         </Text>
       </View>
-      <Text style={[toDoStyles.time, isActive && {color: "#7A7777"}]}>6.00 am</Text>
+      <Text style={[toDoStyles.time, isActive && { color: "#7A7777" }]}>
+        {time?.toString()}
+      </Text>
     </TouchableOpacity>
   );
 };

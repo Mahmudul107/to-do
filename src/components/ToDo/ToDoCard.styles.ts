@@ -30,4 +30,8 @@ export const toDoStyles = StyleSheet.create({
     color: "#7A7777",
     textDecorationLine: "line-through",
   },
+  // status: {
+  //   fontSize: 14,
+  //   color: isCompleted ? "green" : "red", // Dynamic color based on status
+  // },
 });

@@ -6,18 +6,37 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Modal from "react-native-modal";
-import React from "react";
+import React, { useState } from "react";
 
-const AddTodo = ({isActive} : {isActive:boolean}) => {
+const AddTodo = ({
+  isActive,
+  onClose,
+  value,
+  onChangeText,
+  handleSubmit,
+}: {
+  isActive: boolean;
+  onClose: any;
+  value: string;
+  onChangeText: (e: any) => void;
+  handleSubmit: any;
+}) => {
   return (
-    <Modal isVisible={isActive} style={styles.modal}>
+    <Modal
+      isVisible={isActive}
+      style={styles.modal}
+      onBackButtonPress={onClose}
+      onBackdropPress={onClose}
+    >
       <View style={styles.container}>
         <Text style={styles.title}> Add Todo</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your Todo"
+          value={value}
+          onChangeText={onChangeText}
         ></TextInput>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} activeOpacity={0.8} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
@@ -57,13 +76,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
   },
-  buttonText:{
+  buttonText: {
     textAlign: "center",
     fontSize: 18,
     fontWeight: 700,
     color: "white",
     textTransform: "capitalize",
-  }
+  },
 });
 
 export default AddTodo;
