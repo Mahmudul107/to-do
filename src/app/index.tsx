@@ -33,7 +33,14 @@ const Home = () => {
     loadTodo()
   }, [])
 
-  
+  // save to to async storage
+  const saveTodos = async (todos : TTodoData[]) => {
+    try {
+      await AsyncStorage.setItem("todos", JSON.stringify(todos))
+    }catch(error){
+      console.error("Failed to saved todo", error)
+    }
+  }
 
   const handleSubmit = () => {
     if (!todo) {
@@ -45,8 +52,11 @@ const Home = () => {
       isCompleted: false,
       time: new Date().toLocaleTimeString(),
     };
-    console.log("debugging", finalData);
-    setData([...data, finalData]);
+    // console.log("debugging", finalData);
+    const updatedTodos = [...data, finalData]
+
+    setData(updatedTodos);
+    saveTodos(updatedTodos) // save to local storage
     setOpen(false);
     setTodo("");
   };
