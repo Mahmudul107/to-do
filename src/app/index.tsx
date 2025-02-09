@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import Header from "../components/Header/Header";
 import ToDoCard from "../components/ToDo/ToDoCard";
 import Button from "../components/AddTodo/Button";
 import AddTodo from "../components/AddTodo/AddTodo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type TTodoData = {
   title: string;
@@ -15,6 +16,24 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<TTodoData[]>([]);
   const [todo, setTodo] = useState("");
+
+
+  // Load todo from async Storage
+  useEffect(() => {
+    const loadTodo = async () =>{
+      try {
+        const savedTodo = await AsyncStorage.getItem("todos")
+        if(savedTodo){
+          setData(JSON.parse(savedTodo))
+        }
+      }catch (error){
+        console.error("Failed to load", error)
+      }
+    }
+    loadTodo()
+  }, [])
+
+  
 
   const handleSubmit = () => {
     if (!todo) {
